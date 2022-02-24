@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 
 # V16 now under GIT control
@@ -811,13 +811,13 @@ change_lights(0) # no lights
 # for developement uncomment the line below
 #display = pygame.display.set_mode(size)
 # for autostart to work properly uncomment the line below
-#display = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
-display = pygame.display.set_mode((1920,1080))
+display = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+#display = pygame.display.set_mode((1920,1080))
 
 pygame.display.set_caption('ID The Dolphin')
 pygame.mixer.music.set_volume(1.0)
 # load the pics 'c' for computer 'u' for user
-gpath = '/home/pi/MyCode/Dolphin-Project/graphics/'
+gpath = '/home/pi/My-Code/Dolphin-Project/graphics/'
 udol1 = gpath + '25b.jpg'
 udol2 = gpath + '26b.jpg'
 udol3 = gpath + '75a.jpg'
@@ -912,9 +912,9 @@ blue_arrow = pygame.image.load(b_arro).convert_alpha()
 green_glow = pygame.image.load(g_gl).convert_alpha()
 red_glow = pygame.image.load(r_gl).convert_alpha()
 gray_glow = pygame.image.load(gr_gl).convert_alpha()
-# DANGER for some reason this ran fine in vscode without
-# defining this path but crashed on deployment
-ppath = '/home/pi/MyCode/Dolphin-Project/'
+
+# path to qna file
+ppath = '/home/pi/My-Code/Dolphin-Project/'
 #endregion
 # game 2 run once ------------------------
 try:
