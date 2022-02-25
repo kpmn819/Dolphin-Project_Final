@@ -9,7 +9,7 @@ import pandas as pd
 
 
 #file_path = os.getcwd() + '/MyCode/qna_pool.csv'
-file_path = '/home/pi/My-Code/qna_pool.csv'
+file_path = '/home/pi/My-Code/Dolphin-Project/qna_pool.csv'
 print(file_path)
 # initalise the tkinter GUI
 root = tk.Tk()
