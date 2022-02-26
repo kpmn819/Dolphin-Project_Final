@@ -1,4 +1,6 @@
-# Youtube Link: https://www.youtube.com/watch?v=PgLjwl6Br0k
+#!/usr/bin/python
+''' program to allow easy editing of the qna_pool.csv file that
+    contains the questions and answers for game2'''
 
 import tkinter as tk
 from tkinter import DISABLED, IntVar, filedialog, messagebox, ttk

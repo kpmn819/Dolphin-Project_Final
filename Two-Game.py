@@ -778,7 +778,7 @@ def final_display(right_ans, wrong_ans):
 
     
     if not win and not free:
-        font_process(60,'Sorry, you are not a winner this time', (175,175,255), image_centerx, 1000)
+        font_process(60,'Sorry, you did not win a prize this time', (175,175,255), image_centerx, 1000)
 
     pygame.display.flip()
     # change_lights(0) # turn off the button lights
