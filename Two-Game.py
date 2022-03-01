@@ -92,16 +92,16 @@ def portassign(ports):
     # assign ports based on index[0] if 0 Output else Input
     
     if ports[0] == 0:
-        print('Output')
+        #print('Output')
         for index in range(1, len(ports)):
             GPIO.setup(ports[index], GPIO.OUT)
             
-            print(ports[index])
+            #print(ports[index])
     else:
-        print('Input')
+        #print('Input')
         for index in range(1, len(ports)):
             GPIO.setup(ports[index], GPIO.IN, pull_up_down = GPIO.PUD_UP)
-            print(ports[index])
+            #print(ports[index])
             
 
 
@@ -156,7 +156,7 @@ def free_cash(picture):
             break
                 
         if GPIO.input(portList2[2]) == GPIO.LOW:
-            print('PLAYBACK SHOULD HAPPEN')
+            #print('PLAYBACK SHOULD HAPPEN')
             sleep(.08)
             free = False
             win = False # set it false for now
@@ -310,8 +310,8 @@ def play_loop():
     display_pics = rnums[:]
     # now scramble order of display
     shuffle(display_pics)
-    print('display pics is now ' + str(display_pics))
-    print('rnums is now--- ' + str(rnums))
+    #print('display pics is now ' + str(display_pics))
+    #print('rnums is now--- ' + str(rnums))
    
     # use display_pic to put up that pic on top (chalange pic)
     # use rnums to show all pics on bottom (computer pics)
@@ -369,7 +369,7 @@ def play_loop():
     
 def show_glow(green_pos, red_pos):
     # gets the green and red positions and blits screen
-    print('show_glow has green/red' + str(green_pos) + '/' + str(red_pos))
+    #print('show_glow has green/red' + str(green_pos) + '/' + str(red_pos))
     start_x = 24
     glow_posx = [start_x, start_x + 380, start_x + 760, start_x + 1140, start_x + 1520]
     glow_posy = 570
