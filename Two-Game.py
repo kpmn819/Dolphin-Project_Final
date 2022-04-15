@@ -546,6 +546,13 @@ def which_game():
         if event.type == pygame.MOUSEBUTTONDOWN:
             print('got the mouse')
             reset_pressed(6)
+        # shutdown code goes here press buttons 2 & 4
+        if GPIO.input(portList[2]) == GPIO.LOW and GPIO.input(portList[4]) == GPIO.LOW:
+            sleep(2)
+            # are they still pressed?
+            if GPIO.input(portList[2]) == GPIO.LOW and GPIO.input(portList[4]) == GPIO.LOW:
+                GPIO.cleanup()
+                os.system("sudo shutdown -h now")
         
     change_lights(0) # turn off the button lights   
 
