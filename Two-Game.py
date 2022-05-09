@@ -323,7 +323,7 @@ def play_loop():
         #shuffle_pics()
         
         display_pic = display_pics[turn]  # picks a new one each turn
-        caption = 'Match this Fin: Chance # ' + str(turn + 1)
+        caption = 'Match this Fin: Chance # ' + str(turn + 1) + ' of 5'
         send_to_screen(display_pic, rnums, caption)  # put up the challenge screen
 
         #  go get user response
@@ -517,10 +517,10 @@ def which_game():
     # now the right side
     x = 1430
     y = 600
-    greeting = 'Bonehenge Tour Quiz'
+    greeting = 'Test your whale knowledge'
     font_process(70, greeting, white, x, y)
     y = y + 90
-    greeting = 'Answer some questions about what you learned on your tour'
+    greeting = 'Here come your five questions'
     parsed_lines = parse_string(greeting, 30)
     for item in parsed_lines:
         font_process(60, item, white, x, y)
