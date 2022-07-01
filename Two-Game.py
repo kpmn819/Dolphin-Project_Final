@@ -62,6 +62,11 @@ game1 = True
 pos_resp =['Correct','Got it, Nice','Right','Good Pick','Way to go','On a roll']
 neg_resp =['Sorry','Nope','Not that one','Too bad','Gotcha','Maybe next time']
 final_resp =['Better Try Again','Keep Working at it','Got a Couple','Pretty Good','Excellent Nice Job','100% Wow!']
+# prize names and indexes 
+big_prize = ['big1', 'big2', 'big3', 'big4', 'big5']
+small_prize = ['small1', 'small2', 'small3', 'small4', 'small5']
+big_index = 0
+small_index = 0
 # set the delay for reset if they walk away
 MASTER_TIMEOUT = 300
 # VARIABLE INITIALIZE END _________________________________________
@@ -289,7 +294,7 @@ def reset_pressed(port):
     sys.exit()
     
 
-# ////////////////////// SMALL UTILITIES \\\\\\\\\\\\\\\\\\\\\
+# ////////////////////// END SMALL UTILITIES \\\\\\\\\\\\\\\\\\\\\
 
 
 # ------------------------- Where all the action happens --------------
@@ -323,7 +328,7 @@ def play_loop():
         #shuffle_pics()
         
         display_pic = display_pics[turn]  # picks a new one each turn
-        caption = 'Match this Fin: Chance # ' + str(turn + 1) + ' of 5'
+        caption = 'Match this Fin: Chance # ' + str(turn + 1)
         send_to_screen(display_pic, rnums, caption)  # put up the challenge screen
 
         #  go get user response
@@ -517,10 +522,10 @@ def which_game():
     # now the right side
     x = 1430
     y = 600
-    greeting = 'Test your whale knowledge'
+    greeting = 'Bonehenge Tour Quiz'
     font_process(70, greeting, white, x, y)
     y = y + 90
-    greeting = 'Here come your five questions'
+    greeting = 'Answer some questions about what you learned on your tour'
     parsed_lines = parse_string(greeting, 30)
     for item in parsed_lines:
         font_process(60, item, white, x, y)
@@ -546,13 +551,14 @@ def which_game():
         if event.type == pygame.MOUSEBUTTONDOWN:
             print('got the mouse')
             reset_pressed(6)
-        # shutdown code goes here press buttons 2 & 4
+        # shutdown code goes here press buttons 2 & 4 
         if GPIO.input(portList[2]) == GPIO.LOW and GPIO.input(portList[4]) == GPIO.LOW:
             sleep(2)
             # are they still pressed?
             if GPIO.input(portList[2]) == GPIO.LOW and GPIO.input(portList[4]) == GPIO.LOW:
                 GPIO.cleanup()
                 os.system("sudo shutdown -h now")
+
         
     change_lights(0) # turn off the button lights   
 
@@ -774,9 +780,27 @@ def final_display(right_ans, wrong_ans):
     font_process(60, final_msg, white, image_centerx, 600)
     pygame.display.flip()
     sleep(1)
-    if win:
+    if right_ans == 5 or right_ans == 4:
         font_process(75,'You are a WINNER!!',red, image_centerx, 900)
         font_process(75,'Please see one of our Staff for your prize',red, image_centerx, 1000)
+        if right_ans == 5:
+            # award big prize
+            if big_index < 4: # pick a winner code
+                big_index += 1
+            else:
+                big_index = 0
+            winner_code = big_prize[big_index]
+            print('Large Prize')
+            font_process(75,'Tell them your winner code is'+ '"' + winner_code + '"', red, image_centerx, 1100)
+        if right_ans == 4:    
+            # award small prize
+            if small_index < 4:
+                small_index += 1
+            else:
+                small_index = 0
+            print('Small Prize')
+            winner_code = small_prize[small_index]
+            font_process(75,'Tell them your winner code is'+ '"' + winner_code + '"', red, image_centerx, 1100)
         sleep(3) # let sound above play out
         play_sound('fanfare.mp3', 1)
         GPIO.output(portList3[1], True) # turn on the bell
@@ -784,7 +808,7 @@ def final_display(right_ans, wrong_ans):
         GPIO.output(portList3[1], False) # turn it off
 
     
-    if not win and not free:
+    if right_ans < 4 and not free: 
         font_process(60,'Sorry, you did not win a prize this time', (175,175,255), image_centerx, 1000)
 
     pygame.display.flip()
