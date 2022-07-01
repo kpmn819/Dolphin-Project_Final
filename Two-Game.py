@@ -796,7 +796,7 @@ def final_display(right_ans, wrong_ans):
                 big_index = 0
             winner_code = big_prize[big_index]
             print('Large Prize')
-            font_process(75,'Tell them your winner code is'+ '"' + winner_code + '"', red, image_centerx, msg_vert + 200)
+            font_process(75,'Tell them your winner code is '+ '"' + winner_code + '"', red, image_centerx, msg_vert + 200)
         if right_ans == 4:    
             # award small prize
             if small_index < 4:
@@ -805,7 +805,7 @@ def final_display(right_ans, wrong_ans):
                 small_index = 0
             print('Small Prize')
             winner_code = small_prize[small_index]
-            font_process(75,'Tell them your winner code is'+ '"' + winner_code + '"', red, image_centerx, msg_vert + 200)
+            font_process(75,'Tell them your winner code is '+ '"' + winner_code + '"', red, image_centerx, msg_vert + 200)
         sleep(3) # let sound above play out
         play_sound('fanfare.mp3', 1)
         GPIO.output(portList3[1], True) # turn on the bell
