@@ -770,6 +770,10 @@ def take_turns():
 # -------------------- SHARED CODE FOR END ----------------------
 def final_display(right_ans, wrong_ans):
     # final score
+    global small_index
+    global big_index
+    global big_prize
+    global small_prize
     score_msg = ('Final Score  '+ str(right_ans)+ ' right  '+ str(wrong_ans)+' wrong')
     final_msg = (final_resp[right_ans])
     final_sound = final_audio[right_ans]
@@ -780,9 +784,10 @@ def final_display(right_ans, wrong_ans):
     font_process(60, final_msg, white, image_centerx, 600)
     pygame.display.flip()
     sleep(1)
+    msg_vert = 700
     if right_ans == 5 or right_ans == 4:
-        font_process(75,'You are a WINNER!!',red, image_centerx, 900)
-        font_process(75,'Please see one of our Staff for your prize',red, image_centerx, 1000)
+        font_process(75,'You are a WINNER!!',red, image_centerx, msg_vert)
+        font_process(75,'Please see one of our Staff for your prize',red, image_centerx, msg_vert + 100)
         if right_ans == 5:
             # award big prize
             if big_index < 4: # pick a winner code
@@ -791,7 +796,7 @@ def final_display(right_ans, wrong_ans):
                 big_index = 0
             winner_code = big_prize[big_index]
             print('Large Prize')
-            font_process(75,'Tell them your winner code is'+ '"' + winner_code + '"', red, image_centerx, 1100)
+            font_process(75,'Tell them your winner code is'+ '"' + winner_code + '"', red, image_centerx, msg_vert + 200)
         if right_ans == 4:    
             # award small prize
             if small_index < 4:
@@ -800,7 +805,7 @@ def final_display(right_ans, wrong_ans):
                 small_index = 0
             print('Small Prize')
             winner_code = small_prize[small_index]
-            font_process(75,'Tell them your winner code is'+ '"' + winner_code + '"', red, image_centerx, 1100)
+            font_process(75,'Tell them your winner code is'+ '"' + winner_code + '"', red, image_centerx, msg_vert + 200)
         sleep(3) # let sound above play out
         play_sound('fanfare.mp3', 1)
         GPIO.output(portList3[1], True) # turn on the bell
