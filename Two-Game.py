@@ -63,8 +63,8 @@ pos_resp =['Correct','Got it, Nice','Right','Good Pick','Way to go','On a roll']
 neg_resp =['Sorry','Nope','Not that one','Too bad','Gotcha','Maybe next time']
 final_resp =['Better Try Again','Keep Working at it','Got a Couple','Pretty Good','Excellent Nice Job','100% Wow!']
 # prize names and indexes 
-big_prize = ['big1', 'big2', 'big3', 'big4', 'big5']
-small_prize = ['small1', 'small2', 'small3', 'small4', 'small5']
+big_prize = ['Blue', 'Fin', 'Humpback', 'Minke', 'Right']
+small_prize = ['Bottlenose', 'Dwarf', 'Porpoise', 'Pygmy', 'Spotted']
 big_index = 0
 small_index = 0
 # set the delay for reset if they walk away
@@ -142,9 +142,9 @@ def free_cash(picture):
     font_process(60, greeting, white, image_centerx, 280)
     greeting = 'Make a Donation and get a chance to win a Bonehenge Prize'
     font_process(60, greeting, white, image_centerx, 360)
-    greeting = 'Prizes are awarded randomly and are not dependent on final quiz score'
+    greeting = 'Prizes are awarded for 5 of 5 or 4 of 5 correct answers'
     font_process(30, greeting, white, image_centerx, 800)
-    greeting = 'Odds of winning are 1 in '+ str(int(100 / payout))
+    greeting = 'If you win you will see your winner code word'
     font_process(30, greeting, white, image_centerx, 850)
     pygame.display.flip()
     
