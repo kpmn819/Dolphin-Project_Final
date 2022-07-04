@@ -785,7 +785,7 @@ def final_display(right_ans, wrong_ans):
     pygame.display.flip()
     sleep(1)
     msg_vert = 700
-    if right_ans == 5 or right_ans == 4:
+    if (right_ans == 5 or right_ans == 4) and not free:
         font_process(75,'You are a WINNER!!',red, image_centerx, msg_vert)
         font_process(75,'Please see one of our Staff for your prize',red, image_centerx, msg_vert + 100)
         if right_ans == 5:
@@ -797,7 +797,7 @@ def final_display(right_ans, wrong_ans):
             winner_code = big_prize[big_index]
             print('Large Prize')
             font_process(75,'Tell them your winner code is '+ '"' + winner_code + '"', red, image_centerx, msg_vert + 200)
-        if right_ans == 4:    
+        if right_ans == 4 and not free:    
             # award small prize
             if small_index < 4:
                 small_index += 1
