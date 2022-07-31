@@ -406,8 +406,8 @@ def which_pic2():
                 ans = portList.index(portList[index]) -1 # then locate it in the list
                 print('Button Press: ',str(ans))
             # reset game when free play is pressed
-            if GPIO.input(13) == GPIO.LOW:
-                raise timeout_decorator.TimeoutError
+            #if GPIO.input(13) == GPIO.LOW:
+                #raise timeout_decorator.TimeoutError
             
         if ans in range(0, 5):
             break # got our answer break out of forever loop
@@ -721,8 +721,8 @@ def game2_input():
             ans = 3
             break
         # game reset from free play button
-        if GPIO.input(13) == GPIO.LOW:
-                raise timeout_decorator.TimeoutError
+        #if GPIO.input(13) == GPIO.LOW:
+                #raise timeout_decorator.TimeoutError
     return ans
 
 # timer decorator
